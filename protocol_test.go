@@ -1,16 +1,12 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func BenchmarkComposeNameBinary(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		name.ComposeNameBinary()
-	}
-}
-
-func BenchmarkComposeNameJSON(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		name.ComposeNameJSON()
 	}
 }
 
@@ -20,8 +16,26 @@ func BenchmarkParseNameBinary(b *testing.B) {
 	}
 }
 
+func BenchmarkComposeNameJSON(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		name.ComposeNameJSON()
+	}
+}
+
 func BenchmarkParseNameJSON(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		ParseNameJSON(nameBytes)
+	}
+}
+
+func BenchmarkComposeNamePB(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ComposeNamePB(naam)
+	}
+}
+
+func BenchmarkParseNamePB(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ParseNamePB(nameBytes)
 	}
 }
